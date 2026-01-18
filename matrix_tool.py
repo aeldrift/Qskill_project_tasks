@@ -40,7 +40,7 @@ while True:
     print("\n--- Matrix Operations Menu ---")
     print("1. Addition")
     print("2. Subtraction")
-    print("3. Transpose of Matrix A")
+    print("3. Transpose")
     print("4. Exit")
 
     choice = input("Enter your choice: ")
@@ -60,8 +60,18 @@ while True:
             print("Subtraction not possible (different dimensions)")
 
     elif choice == "3":
-        print("\nTranspose of Matrix A:")
-        print(A.T)
+        matrix_choice = input("Transpose which matrix? (A/B): ").upper()
+
+        if matrix_choice == "A":
+            print("\nTranspose of Matrix A:")
+            print(A.T)
+
+        elif matrix_choice == "B":
+            print("\nTranspose of Matrix B:")
+            print(B.T)
+
+        else:
+            print("Invalid matrix choice. Please enter A or B.")
 
     elif choice == "4":
         print("Exiting program...")
@@ -69,6 +79,3 @@ while True:
 
     else:
         print("Invalid choice. Try again.")
-
- 
- 

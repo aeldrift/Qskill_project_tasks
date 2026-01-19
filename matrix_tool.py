@@ -1,16 +1,10 @@
 import numpy as np
 
-def get_matrix(name):
-    """
-    Takes matrix input from user with proper validation
-    and returns it as a NumPy array.
-    """
-    # Input rows and columns
+def get_matrix(name):  # taking matrix values from user
     while True:
         try:
             rows = int(input(f"Enter number of rows for Matrix {name}: "))
             cols = int(input(f"Enter number of columns for Matrix {name}: "))
-
             if rows <= 0 or cols <= 0:
                 print("Rows and columns must be positive numbers.")
                 continue
@@ -18,8 +12,7 @@ def get_matrix(name):
         except ValueError:
             print("Invalid input. Please enter numeric values only.")
 
-    # Input matrix values
-    print(f"Enter values for Matrix {name} row-wise (space separated):")
+    print(f"\nEnter values for Matrix {name} row-wise (space separated):")
     matrix = []
 
     for i in range(rows):
@@ -37,20 +30,21 @@ def get_matrix(name):
     return np.array(matrix)
 
 
-def analyze_matrix(M, name):
+def print_matrix(M, title):
+    print(f"\n{title}")
+    for row in M:
+        print(row)
+
+
+def analyze_matrix(M, name):  # Analyzing the matrix
     rows, cols = M.shape
     print(f"\n--- Analysis of Matrix {name} ---")
 
-    if rows == cols:
-        print("• Square Matrix")
-    else:
-        print("• Rectangular Matrix")
-
+    print("• Square Matrix" if rows == cols else "• Rectangular Matrix")
     if rows == 1:
         print("• Row Matrix")
     if cols == 1:
         print("• Column Matrix")
-
     if np.all(M == 0):
         print("• Zero Matrix")
 
@@ -59,100 +53,99 @@ def analyze_matrix(M, name):
             print("• Diagonal Matrix")
             if np.all(M.diagonal() == M.diagonal()[0]):
                 print("• Scalar Matrix")
-
         if np.allclose(M, np.eye(rows)):
             print("• Identity Matrix")
-
         if np.allclose(M, M.T):
             print("• Symmetric Matrix")
-
         if np.allclose(M, -M.T):
             print("• Skew-Symmetric Matrix")
 
-
-def determinant_matrix(M, name):
-    rows, cols = M.shape
-    if rows != cols:
-        print(f"\nDeterminant not possible for Matrix {name} (not a square matrix).")
+def determinant_matrix(M, name):  # to find determinant of matrix
+    if M.shape[0] != M.shape[1]:
+        print(f"\nDeterminant not possible for Matrix {name} (not square).")
         return
     det = np.linalg.det(M)
     print(f"\nDeterminant of Matrix {name}: {det:.2f}")
 
 
-# Matrix Input
-A = get_matrix("A")
-B = get_matrix("B")
 
-print("\nMatrix A:")
-print(A)
+def main():
+    A = get_matrix("A")
+    B = get_matrix("B")
 
-print("\nMatrix B:")
-print(B)
+    print_matrix(A, "Matrix A")
+    print_matrix(B, "Matrix B")
 
-# Menu
-while True:
-    print("\n--- Matrix Operations Menu ---")
-    print("1. Matrix Analysis")
-    print("2. Addition")
-    print("3. Subtraction")
-    print("4. Transpose")
-    print("5. Determinant")
-    print("6. Exit")
+    while True:        # matrix tasks to be performed
 
-    choice = input("Enter your choice: ")
+        print("\n--- Matrix Operations Menu ---")
+        print("1. Matrix Analysis")
+        print("2. Addition")
+        print("3. Subtraction")
+        print("4. Multiplication")
+        print("5. Transpose")
+        print("6. Determinant")
+        print("7. Exit")
 
-    if choice == "1":
-        matrix_choice = input("Analyze which matrix? (A/B): ").upper()
-        if matrix_choice == "A":
-            analyze_matrix(A, "A")
-        elif matrix_choice == "B":
-            analyze_matrix(B, "B")
+        choice = input("Enter your choice: ")
+
+        if choice == "1":
+            m = input("Analyze which matrix? (A/B): ").upper()
+            if m == "A":
+                analyze_matrix(A, "A")
+            elif m == "B":
+                analyze_matrix(B, "B")
+            else:
+                print("Invalid choice.")
+
+        elif choice == "2":
+            if A.shape == B.shape:
+                print_matrix(A + B, "A + B")
+            else:
+                print("Addition not possible (different dimensions).")
+
+        elif choice == "3":
+            if A.shape == B.shape:
+                print_matrix(A - B, "A - B")
+            else:
+                print("Subtraction not possible (different dimensions).")
+
+        elif choice == "4":
+            if A.shape[1] == B.shape[0]:
+                print_matrix(A @ B, "A × B")
+            else:
+                print("Multiplication not possible (columns of A ≠ rows of B).")
+
+        elif choice == "5":
+            m = input("Transpose which matrix? (A/B): ").upper()
+            if m == "A":
+                print_matrix(A.T, "Transpose of Matrix A")
+            elif m == "B":
+                print_matrix(B.T, "Transpose of Matrix B")
+            else:
+                print("Invalid choice.")
+
+        elif choice == "6":
+            m = input("Determinant of which matrix? (A/B): ").upper()
+            if m == "A":
+                determinant_matrix(A, "A")
+            elif m == "B":
+                determinant_matrix(B, "B")
+            else:
+                print("Invalid choice.")
+
+        elif choice == "7":
+            print("Program Exit.")
+            break
+
         else:
-            print("Invalid matrix choice.")
+            print("Invalid choice.")
+            continue
 
-    elif choice == "2":
-        if A.shape == B.shape:
-            print("\nResult of Addition:")
-            print(A + B)
-        else:
-            print("Addition not possible (different dimensions).")
+        if input("\nDo you want to continue? (Y/N): ").upper() != "Y":
+            print("Thank you for using the Matrix Operations Tool.")
+            break
 
-    elif choice == "3":
-        if A.shape == B.shape:
-            print("\nResult of Subtraction:")
-            print(A - B)
-        else:
-            print("Subtraction not possible (different dimensions).")
 
-    elif choice == "4":
-        matrix_choice = input("Transpose which matrix? (A/B): ").upper()
-        if matrix_choice == "A":
-            print("\nTranspose of Matrix A:")
-            print(A.T)
-        elif matrix_choice == "B":
-            print("\nTranspose of Matrix B:")
-            print(B.T)
-        else:
-            print("Invalid matrix choice.")
-
-    elif choice == "5":
-        matrix_choice = input("Find determinant of which matrix? (A/B): ").upper()
-        if matrix_choice == "A":
-            determinant_matrix(A, "A")
-        elif matrix_choice == "B":
-            determinant_matrix(B, "B")
-        else:
-            print("Invalid matrix choice.")
-
-    elif choice == "6":
-        print("Program Exit.")
-        break
-
-    else:
-        print("Invalid choice. Try again.")
-        continue
-
-    cont = input("\nDo you want to perform another operation? (Y/N): ").upper()
-    if cont != "Y":
-        print("Thank you for using the Matrix Operations Tool.")
-        break
+if __name__ == "__main__":
+    main()

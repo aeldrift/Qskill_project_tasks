@@ -50,14 +50,14 @@ while True:
             print("\nResult of Addition:")
             print(A + B)
         else:
-            print("❌ Addition not possible (different dimensions)")
+            print("Addition not possible (different dimensions)")
 
     elif choice == "2":
         if A.shape == B.shape:
             print("\nResult of Subtraction:")
             print(A - B)
         else:
-            print("❌ Subtraction not possible (different dimensions)")
+            print("Subtraction not possible (different dimensions)")
 
     elif choice == "3":
         matrix_choice = input("Transpose which matrix? (A/B): ").upper()
@@ -69,14 +69,14 @@ while True:
             print("\nTranspose of Matrix B:")
             print(B.T)
         else:
-            print("❌ Invalid matrix choice. Please enter A or B.")
+            print("Invalid matrix choice. Please enter A or B.")
 
     elif choice == "4":
         print("Exiting program...")
         break
 
     else:
-        print("❌ Invalid choice. Try again.")
+        print("Invalid choice. Try again.")
         continue
 
     # Ask user whether to continue

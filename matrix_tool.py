@@ -41,7 +41,6 @@ def analyze_matrix(M, name):
     rows, cols = M.shape
     print(f"\n--- Analysis of Matrix {name} ---")
 
-    # Shape type
     if rows == cols:
         print("• Square Matrix")
     else:
@@ -52,15 +51,12 @@ def analyze_matrix(M, name):
     if cols == 1:
         print("• Column Matrix")
 
-    # Zero matrix
     if np.all(M == 0):
         print("• Zero Matrix")
 
-    # Square matrix checks
     if rows == cols:
         if np.allclose(M, np.diag(np.diag(M))):
             print("• Diagonal Matrix")
-
             if np.all(M.diagonal() == M.diagonal()[0]):
                 print("• Scalar Matrix")
 
@@ -74,7 +70,16 @@ def analyze_matrix(M, name):
             print("• Skew-Symmetric Matrix")
 
 
-# Taking matrix input
+def determinant_matrix(M, name):
+    rows, cols = M.shape
+    if rows != cols:
+        print(f"\nDeterminant not possible for Matrix {name} (not a square matrix).")
+        return
+    det = np.linalg.det(M)
+    print(f"\nDeterminant of Matrix {name}: {det:.2f}")
+
+
+# Matrix Input
 A = get_matrix("A")
 B = get_matrix("B")
 
@@ -84,14 +89,15 @@ print(A)
 print("\nMatrix B:")
 print(B)
 
-# Menu-driven operations
+# Menu
 while True:
     print("\n--- Matrix Operations Menu ---")
     print("1. Matrix Analysis")
     print("2. Addition")
     print("3. Subtraction")
     print("4. Transpose")
-    print("5. Exit")
+    print("5. Determinant")
+    print("6. Exit")
 
     choice = input("Enter your choice: ")
 
@@ -130,6 +136,15 @@ while True:
             print("Invalid matrix choice.")
 
     elif choice == "5":
+        matrix_choice = input("Find determinant of which matrix? (A/B): ").upper()
+        if matrix_choice == "A":
+            determinant_matrix(A, "A")
+        elif matrix_choice == "B":
+            determinant_matrix(B, "B")
+        else:
+            print("Invalid matrix choice.")
+
+    elif choice == "6":
         print("Program Exit.")
         break
 

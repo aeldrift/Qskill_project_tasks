@@ -5,23 +5,35 @@ def get_matrix(name):
     Takes matrix input from user with proper validation
     and returns it as a NumPy array.
     """
+    # Input rows and columns
+    while True:
+        try:
+            rows = int(input(f"Enter number of rows for Matrix {name}: "))
+            cols = int(input(f"Enter number of columns for Matrix {name}: "))
 
-    rows = int(input(f"Enter number of rows for Matrix {name}: "))
-    cols = int(input(f"Enter number of columns for Matrix {name}: "))
+            if rows <= 0 or cols <= 0:
+                print("Rows and columns must be positive numbers.")
+                continue
 
+            break
+        except ValueError:
+            print("Invalid input. Please enter numeric values only.")
+
+    # Input matrix values
     print(f"Enter values for Matrix {name} row-wise (space separated):")
-
     matrix = []
 
     for i in range(rows):
         while True:
-            row = list(map(float, input(f"Row {i+1}: ").split()))
-
-            if len(row) == cols:
-                matrix.append(row)
-                break
-            else:
-                print(f"Error: Please enter exactly {cols} values.")
+            try:
+                row = list(map(float, input(f"Row {i+1}: ").split()))
+                if len(row) == cols:
+                    matrix.append(row)
+                    break
+                else:
+                    print(f"Please enter exactly {cols} values.")
+            except ValueError:
+                print("Invalid input. Please enter numeric values only.")
 
     return np.array(matrix)
 
@@ -61,7 +73,6 @@ while True:
 
     elif choice == "3":
         matrix_choice = input("Transpose which matrix? (A/B): ").upper()
-
         if matrix_choice == "A":
             print("\nTranspose of Matrix A:")
             print(A.T)
@@ -69,17 +80,16 @@ while True:
             print("\nTranspose of Matrix B:")
             print(B.T)
         else:
-            print("Invalid matrix choice. Please enter A or B.")
+            print("Invalid matrix choice.")
 
     elif choice == "4":
-        print("Exiting program...")
+        print("Exiting program.")
         break
 
     else:
         print("Invalid choice. Try again.")
         continue
 
-    # Ask user whether to continue
     continue_choice = input("\nDo you want to perform another operation? (Y/N): ").upper()
     if continue_choice != "Y":
         print("Thank you for using the Matrix Operations Tool.")

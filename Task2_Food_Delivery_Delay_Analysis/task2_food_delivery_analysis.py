@@ -1,16 +1,22 @@
+import os
 import pandas as pd
 import matplotlib.pyplot as plt
 
 
-# STEP 1: LOAD DATASET
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))   # directory where this script is located
 
-data = pd.read_csv("food_delivery_delays.csv", encoding="latin1")
+
+csv_path = os.path.join(BASE_DIR, "food_delivery_delays.csv")   # path to CSV file
+
+# Load dataset
+data = pd.read_csv(csv_path, encoding="latin1")
 
 print("\n--- Dataset Loaded Successfully ---")
 print(data.head())
 
 print("\nDataset Information:")
 print(data.info())
+
 
 
 

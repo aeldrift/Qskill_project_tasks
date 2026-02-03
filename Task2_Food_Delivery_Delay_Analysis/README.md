@@ -5,6 +5,7 @@ Food delivery platforms often face delays due to multiple factors such as traffi
 calculating the average of a selected column. Additionally, use Matplotlib to create
 visualizations, including bar charts, scatter plots, and heatmaps, to analyze the data. Provide
 insights and observations based on the analysis and visualizations.
+**Each visualization is displayed separately to focus on individual insights.**
 
 📖 **Project Overview**
 

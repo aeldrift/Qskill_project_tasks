@@ -66,10 +66,10 @@ The heatmap confirms a strong correlation between distance and delivery time.
 Overall, traffic conditions appear to have a greater impact on delivery delays than distance alone.
 
 
-## 📁 **Project Structure**
-
+📁 **Project Structure**
+```
 Task2_Food_Delivery_Delay_Analysis/
 │
 ├── food_delivery_delays.csv
 ├── task2_food_delivery_analysis.py
-└── README.md
+└── README.md ```

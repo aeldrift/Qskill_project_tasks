@@ -27,7 +27,7 @@ The dataset (food_delivery_delays.csv) represents real-world food delivery order
 
 🛠️ **Tools & Libraries Used**
 
-**Python**
+**• Python**
 
 **• Pandas –**  Data loading, cleaning, and analysis
 

@@ -11,3 +11,23 @@ print(data.head())
 
 print("\nDataset Information:")
 print(data.info())
+
+# SELECTING RELEVANT COLUMNS
+
+columns_used = [
+    "Delivery_time(min)",
+    "Road_traffic_density",
+    "Weather_conditions"
+]
+
+data = data[columns_used]
+
+print("\nSelected Columns Preview:")
+print(data.head())
+
+
+# DATA CLEANING
+
+data = data.dropna()
+
+print("\nAfter Removing Missing Values:")

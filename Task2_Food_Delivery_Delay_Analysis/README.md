@@ -1,65 +1,72 @@
+🎯 **Problem Statement**
+Food delivery platforms often face delays due to multiple factors such as traffic congestion, distance, and weather conditions.
+
+**TASK**: Using the Pandas library, load a CSV file and perform basic data analysis tasks, such as
+calculating the average of a selected column. Additionally, use Matplotlib to create
+visualizations, including bar charts, scatter plots, and heatmaps, to analyze the data. Provide
+insights and observations based on the analysis and visualizations.
+
+📖 **Project Overview**
+
 This project analyzes food delivery data to understand the key factors that contribute to delivery delays. Using Python’s Pandas and Matplotlib libraries, the dataset is explored through statistical analysis and visualizations to uncover patterns related to distance, traffic conditions, and overall delivery time.
 
+The goal of this study is to identify which factors most strongly influence delivery delays and to extract practical, operational insights from real-world data.
 
-What Actually Drives Food Delivery Delays?
-A Data Analysis and Visualization Study using Python
+(I analyzed real food delivery data to identify how traffic and conditions affect delivery delays. Tried to get cleaned the data, visualized trends, and created delay categories to extract operational insights.)
 
+📂 **Dataset Description**
 
-📂 Dataset Description
+The dataset (food_delivery_delays.csv) represents real-world food delivery orders and contains the following columns:
 
-The dataset (food_delivery_delays.csv) contains the following columns:
-• Order_ID – Unique identifier for each order
-
-• Distance_km – Distance between restaurant and customer
-
-• Traffic_Level – Traffic condition during delivery (Low, Medium, High)
-
-• Weather – Weather condition at the time of delivery
-
-• Delivery_Time_min – Total delivery time in minutes
+**• Order_ID –**  Unique identifier for each delivery order
+**• Distance_km –**  Distance between the restaurant and the customer
+**• Traffic_Level –** Traffic condition during delivery (Low, Medium, High)
+**• Weather – Weather –** condition at the time of delivery
+**• Delivery_Time_min –**  Total delivery time in minutes
 
 
-🛠️ Tools & Libraries Used
+🛠️ **Tools & Libraries Used**
 
-• Python
+**Python**
 
-• Pandas – Data loading and analysis
+**• Pandas –**  Data loading, cleaning, and analysis
 
-• Matplotlib – Data visualization
+**• Matplotlib –**  Data visualization
 
 
-📊 Data Analysis & Visualizations
+📊 **Data Analysis & Visualizations**
 
-1️.  Average Delivery Time
+**1️.  Average Delivery Time**
 
-The average delivery time is calculated using Pandas to understand typical delivery performance.
+The average delivery time is calculated using Pandas to understand the overall delivery performance.
 
-2️.  Bar Chart – Traffic Level vs Delivery Time
+**2️.  Bar Chart – Traffic Level vs Delivery Time**
 
-Shows how delivery time increases with traffic congestion.
+This visualization shows how delivery time increases as traffic congestion changes from Low to High.
 
-3️. Scatter Plot – Distance vs Delivery Time
+**3️. Scatter Plot – Distance vs Delivery Time**
 
-Visualizes the relationship between delivery distance and delivery time.
+The scatter plot visualizes the relationship between delivery distance and delivery time.
 
-4️. Heatmap – Correlation Analysis
+**4️. Heatmap – Correlation Analysis**
 
-Displays the correlation between numerical variables to identify strong relationships.
+A heatmap is used to identify correlations between numerical variables, highlighting strong relationships that impact delivery delays.
 
-🔍 Insights & Observations
+
+🔍 **Insights & Observations**
 
 The average delivery time is approximately 35–40 minutes, indicating moderate delivery delays.
 
-Delivery time increases significantly as traffic changes from Low to High, making traffic a major factor.
+Delivery time increases significantly as traffic conditions shift from Low to High, making traffic congestion a major contributing factor.
 
-The scatter plot shows a positive relationship between distance and delivery time—longer distances usually take more time.
+The scatter plot shows a positive relationship between distance and delivery time, meaning longer distances generally result in longer delivery times.
 
 The heatmap confirms a strong correlation between distance and delivery time.
 
-External factors such as traffic conditions play a more critical role than distance alone.
+Overall, traffic conditions appear to have a greater impact on delivery delays than distance alone.
 
 
-📁 Project Structure
+📁 **Project Structure**
 
 Task2_Food_Delivery_Delay_Analysis/
 │

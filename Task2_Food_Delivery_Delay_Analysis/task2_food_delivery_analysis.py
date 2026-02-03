@@ -20,7 +20,7 @@ print(data.info())
 
 
 
-# STEP 2: SELECT RELEVANT COLUMNS
+# SELECT RELEVANT COLUMNS
 
 columns_used = [
     "Time_taken(min)",
@@ -35,7 +35,7 @@ print(data.head())
 
 
 
-# STEP 3: DATA CLEANING
+# DATA CLEANING
 
 data = data.dropna()
 
@@ -43,7 +43,7 @@ print("\nAfter Removing Missing Values:")
 print(data.info())
 
 
-# STEP 4: BASIC DATA ANALYSIS
+# BASIC DATA ANALYSIS
 
 average_delivery_time = data["Time_taken(min)"].mean()
 print("\nAverage Delivery Time (minutes):", round(average_delivery_time, 2))

@@ -1,7 +1,7 @@
-🎯 **Problem Statement**
+📌 **Problem Statement**
 Food delivery platforms often face delays due to multiple factors such as traffic congestion, distance, and weather conditions.
 
-**TASK**: Using the Pandas library, load a CSV file and perform basic data analysis tasks, such as
+🎯 **TASK**: Using the Pandas library, load a CSV file and perform basic data analysis tasks, such as
 calculating the average of a selected column. Additionally, use Matplotlib to create
 visualizations, including bar charts, scatter plots, and heatmaps, to analyze the data. Provide
 insights and observations based on the analysis and visualizations.
@@ -16,6 +16,10 @@ The goal of this study is to identify which factors most strongly influence deli
 (I analyzed real food delivery data to identify how traffic and conditions affect delivery delays. Tried to get cleaned the data, visualized trends, and created delay categories to extract operational insights.)
 
 📂 **Dataset Description**
+
+**Data Source:** The dataset used in this project is an open-source food delivery dataset obtained from **Kaggle** for educational and analytical purposes.
+
+🔗Link to dataset: https://www.kaggle.com/datasets/willianoliveiragibin/food-delivery-time
 
 The dataset (food_delivery_delays.csv) represents real-world food delivery orders and contains the following columns:
 

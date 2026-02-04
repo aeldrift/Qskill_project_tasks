@@ -3,7 +3,7 @@ import numpy as np
 import io
 import sys
 
-# 🔁 CHANGE THIS ONLY IF YOUR FILE NAME IS DIFFERENT
+
 import matrix_operations_tool as mot
 
 

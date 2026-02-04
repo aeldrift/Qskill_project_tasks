@@ -80,3 +80,18 @@ Task2_Food_Delivery_Delay_Analysis/
 ├── food_delivery_delays.csv
 ├── task2_food_delivery_analysis.py
 └── README.md
+
+
+▶️ How to Run the Project
+
+1. Navigate to the project directory:
+
+''' cd Task2_Food_Delivery_Delay_Analysis
+
+2. Run the analysis script:
+
+python task2_food_delivery_analysis.py
+
+3. The Streamlit UI (Optional – if using)
+
+streamlit run delivery_ui_app.py

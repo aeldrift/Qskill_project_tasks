@@ -107,9 +107,11 @@ Python 3.8 or higher
 ▶️ How to Run the Project
 
 1️⃣ Navigate to the project directory
+
 ``` cd Task2_Food_Delivery_Delay_Analysis ```
 
 2️⃣ Run the analysis script
+
 ``` python task2_food_delivery_analysis.py ```
 
 This will:

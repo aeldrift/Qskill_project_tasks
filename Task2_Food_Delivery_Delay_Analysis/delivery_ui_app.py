@@ -4,6 +4,10 @@ import sys
 import runpy
 import matplotlib.pyplot as plt
 
+import plotly.tools as tls
+import plotly.graph_objects as go
+import numpy as np
+
 
 #  PAGE CONFIG 
 st.set_page_config(
@@ -98,7 +102,9 @@ with st.sidebar:
 # ACTION 
 st.divider()
 st.subheader("▶️ Run Analysis")
-st.markdown("The task is working with a fixed dataset, so the UI is designed as a wrapper, can't take file uploads.")
+st.markdown(
+    "The task is working with a fixed dataset, so the UI is designed as a wrapper, can't take file uploads."
+)
 
 run_analysis = st.button("🚀 Execute Analysis")
 
@@ -115,9 +121,34 @@ if run_analysis:
             sys.stdout = sys.__stdout__
 
     st.session_state.console_output = buffer.getvalue()
-    st.session_state.figures = [plt.figure(num) for num in plt.get_fignums()]
-    plt.close("all")
+
+    figures = []
+
+    for num in plt.get_fignums():
+        fig = plt.figure(num)
+        ax = fig.axes[0]
+
+        # Detect heatmap / imshow (e.g., correlation heatmap)
+        if ax.images:
+            img = ax.images[0]
+            data = img.get_array()
+
+            plotly_fig = go.Figure(
+                data=go.Heatmap(
+                    z=data,
+                    colorscale="Viridis",
+                    hoverongaps=False
+                )
+            )
+            plotly_fig.update_layout(title=ax.get_title())
+            figures.append(plotly_fig)
+        else:
+            figures.append(tls.mpl_to_plotly(fig))
+
+    st.session_state.figures = figures
     st.session_state.viz_index = 0
+    plt.close("all")
+
 
 #  OUTPUT 
 if "console_output" in st.session_state:
@@ -129,7 +160,6 @@ if "console_output" in st.session_state:
     #  Visualizations 
     st.subheader("📊 Visualizations")
     st.info("All plots below are generated directly from the original analysis code.") 
-    
 
     figures = st.session_state.figures
     total = len(figures)
@@ -150,7 +180,11 @@ if "console_output" in st.session_state:
             st.markdown('</div>', unsafe_allow_html=True)
 
         with center:
-            st.pyplot(figures[st.session_state.viz_index])
+            st.plotly_chart(
+                figures[st.session_state.viz_index],
+                use_container_width=True
+            )
+
             st.markdown(
                 f"""
                 <div style="text-align:center; color:#475569; font-weight:600; margin-top:0.5rem;">
@@ -169,6 +203,7 @@ if "console_output" in st.session_state:
 
     else:
         st.warning("No plots were generated.")
+
 
 #  FOOTER 
 st.markdown("""

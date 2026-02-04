@@ -38,3 +38,32 @@ def matrix_input(name):
                 key=f"{name}_row_{i}"
             )
         )
+
+    # validation
+    if any(d.strip() == "" for d in data):
+        return None
+
+    try:
+        matrix = np.array([list(map(float, r.split())) for r in data])
+        if matrix.shape == (rows, cols):
+            return matrix
+    except:
+        return None
+
+    return None
+
+
+A = matrix_input("A")
+B = matrix_input("B")
+
+if A is None or B is None:
+    st.info("⬆️ Enter complete values for both matrices to continue")
+    st.stop()
+
+st.success("Matrices loaded successfully")
+
+st.write("### Matrix A")
+st.write(A)
+
+st.write("### Matrix B")
+st.write(B)

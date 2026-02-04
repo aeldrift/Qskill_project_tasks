@@ -98,8 +98,10 @@ with st.sidebar:
 # ACTION 
 st.divider()
 st.subheader("▶️ Run Analysis")
+st.markdown("The task is working with a fixed dataset, so the UI is designed as a wrapper, can't take file uploads.")
 
 run_analysis = st.button("🚀 Execute Analysis")
+
 
 #  EXECUTION 
 if run_analysis:
@@ -126,7 +128,8 @@ if "console_output" in st.session_state:
 
     #  Visualizations 
     st.subheader("📊 Visualizations")
-    st.info("All plots below are generated directly from the original analysis code.")
+    st.info("All plots below are generated directly from the original analysis code.") 
+    
 
     figures = st.session_state.figures
     total = len(figures)
@@ -171,6 +174,6 @@ if "console_output" in st.session_state:
 st.markdown("""
 <hr>
 <div style="text-align:center; color:#64748b;">
-    Internship Project • Task 2 • Food Delivery Delay Analysis
+     • Task 2  (Food Delivery Delay Analysis)
 </div>
 """, unsafe_allow_html=True)

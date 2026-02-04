@@ -92,7 +92,7 @@ with st.sidebar:
     - Pandas  
     - Matplotlib  
     - Exploratory Data Analysis  
-    - AI-Assisted Development (ChatGPT)  
+    - AI-Assisted Development (ChatGPT etc.)  
     """)
 
 # ACTION 

@@ -150,3 +150,6 @@ if execute:
 
     finally:
         sys.stdout = sys.__stdout__
+
+    # Display output exactly like CLI
+    st.code(buffer.getvalue())

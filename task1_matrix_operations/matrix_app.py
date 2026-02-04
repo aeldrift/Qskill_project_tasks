@@ -75,3 +75,78 @@ st.write(A)
 
 st.write("### Matrix B")
 st.write(B)
+
+
+#  MENU 
+st.divider()
+st.subheader("Matrix Operations Menu")
+
+choice = st.selectbox(
+    "Select Operation",
+    [
+        "Matrix Analysis",
+        "Addition",
+        "Subtraction",
+        "Multiplication",
+        "Transpose",
+        "Determinant"
+    ]
+)
+
+# Matrix selection (ONLY when required)
+selected_matrix = None
+if choice in ["Matrix Analysis", "Transpose", "Determinant"]:
+    selected_matrix = st.radio(
+        "Choose Matrix",
+        ["A", "B"],
+        horizontal=True
+    )
+
+#  EXECUTE 
+execute = st.button("Execute")
+
+if execute:
+
+    # Capture printed output from locked CLI code
+    buffer = io.StringIO()
+    sys.stdout = buffer
+
+    try:
+        if choice == "Matrix Analysis":
+            if selected_matrix == "A":
+                mot.analyze_matrix(A, "A")
+            else:
+                mot.analyze_matrix(B, "B")
+
+        elif choice == "Addition":
+            if A.shape == B.shape:
+                mot.print_matrix(A + B, "A + B")
+            else:
+                print("Addition not possible (different dimensions).")
+
+        elif choice == "Subtraction":
+            if A.shape == B.shape:
+                mot.print_matrix(A - B, "A - B")
+            else:
+                print("Subtraction not possible (different dimensions).")
+
+        elif choice == "Multiplication":
+            if A.shape[1] == B.shape[0]:
+                mot.print_matrix(A @ B, "A × B")
+            else:
+                print("Multiplication not possible (columns of A ≠ rows of B).")
+
+        elif choice == "Transpose":
+            if selected_matrix == "A":
+                mot.print_matrix(A.T, "Transpose of Matrix A")
+            else:
+                mot.print_matrix(B.T, "Transpose of Matrix B")
+
+        elif choice == "Determinant":
+            if selected_matrix == "A":
+                mot.determinant_matrix(A, "A")
+            else:
+                mot.determinant_matrix(B, "B")
+
+    finally:
+        sys.stdout = sys.__stdout__

@@ -67,3 +67,72 @@ st.write(A)
 
 st.write("### Matrix B")
 st.write(B)
+
+# MENU
+st.divider()
+st.subheader("Matrix Operations Menu")
+
+choice = st.selectbox(
+    "Select Operation",
+    [
+        "Matrix Analysis",
+        "Addition",
+        "Subtraction",
+        "Multiplication",
+        "Transpose",
+        "Determinant"
+    ]
+)
+
+# EXECUTION 
+if st.button("Execute"):
+
+    # Capture printed output
+    buffer = io.StringIO()
+    sys.stdout = buffer
+
+    try:
+        if choice == "Matrix Analysis":
+            m = st.radio("Analyze which matrix?", ["A", "B"])
+            if m == "A":
+                mot.analyze_matrix(A, "A")
+            else:
+                mot.analyze_matrix(B, "B")
+
+        elif choice == "Addition":
+            if A.shape == B.shape:
+                mot.print_matrix(A + B, "A + B")
+            else:
+                print("Addition not possible (different dimensions).")
+
+        elif choice == "Subtraction":
+            if A.shape == B.shape:
+                mot.print_matrix(A - B, "A - B")
+            else:
+                print("Subtraction not possible (different dimensions).")
+
+        elif choice == "Multiplication":
+            if A.shape[1] == B.shape[0]:
+                mot.print_matrix(A @ B, "A × B")
+            else:
+                print("Multiplication not possible (columns of A ≠ rows of B).")
+
+        elif choice == "Transpose":
+            m = st.radio("Transpose which matrix?", ["A", "B"])
+            if m == "A":
+                mot.print_matrix(A.T, "Transpose of Matrix A")
+            else:
+                mot.print_matrix(B.T, "Transpose of Matrix B")
+
+        elif choice == "Determinant":
+            m = st.radio("Determinant of which matrix?", ["A", "B"])
+            if m == "A":
+                mot.determinant_matrix(A, "A")
+            else:
+                mot.determinant_matrix(B, "B")
+
+    finally:
+        sys.stdout = sys.__stdout__
+
+    output = buffer.getvalue()
+    st.code(output)

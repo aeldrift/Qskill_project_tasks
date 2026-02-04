@@ -79,27 +79,38 @@ Task2_Food_Delivery_Delay_Analysis/
 │
 ├── food_delivery_delays.csv
 ├── task2_food_delivery_analysis.py
-└── README.md
-'''
+└── README.md 
+```
 
-⚙️ Requirements
+⚙️ **Requirements**
 
-1. Make sure you have Python installed (Python 3.8+ recommended).
+Python 3.8 or higher
 
-Install required libraries if needed:
+**Required Python libraries:**
 
-''' pip install pandas numpy matplotlib seaborn streamlit
-'''
+• pandas
+
+• numpy
+
+• matplotlib
+
+• seaborn
+
+• streamlit (optional)
+
+**Install dependencies:**
+
+
+``` pip install pandas numpy matplotlib seaborn streamlit ```
+
 
 ▶️ How to Run the Project
 
 1️⃣ Navigate to the project directory
-''' cd Task2_Food_Delivery_Delay_Analysis 
-'''
+``` cd Task2_Food_Delivery_Delay_Analysis ```
 
 2️⃣ Run the analysis script
-''' python task2_food_delivery_analysis.py
-'''
+``` python task2_food_delivery_analysis.py ```
 
 This will:
 
@@ -109,11 +120,10 @@ This will:
 
 - Output results (prints/plots depending on implementation)
 
-📊 Streamlit UI (Optional)
+📊 **Streamlit UI** (Optional)
 
 If you want to explore the analysis using an interactive web interface:
 
-''' streamlit run delivery_ui_app.py
-'''
+``` streamlit run delivery_ui_app.py  ```
 
 After running the command, open the local URL shown in the terminal (usually http://localhost:8501) in your browser.

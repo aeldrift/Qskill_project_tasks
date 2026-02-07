@@ -91,6 +91,7 @@ All outputs are shown only after clicking the Predict button to improve user exp
 • The model provides reasonable baseline predictions using linear regression
 
 📁 **Project Structure**
+```
 House_Price_Prediction/
 │
 ├── app.py                # Streamlit application
@@ -98,6 +99,7 @@ House_Price_Prediction/
 │   └── Housing.csv       # Dataset
 ├── README.md             # Project documentation
 └── requirements.txt      # Project dependencies
+```
 
 ⚙️ **Requirements**
 

@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-import matplotlib.pyplot as plt
+import plotly.express as px
 from sklearn.linear_model import LinearRegression
 
 
@@ -105,8 +105,8 @@ stories = st.sidebar.slider("Stories", 1, 4, 2)
 parking = st.sidebar.slider("Parking Spaces", 0, 3, 1)
 
 
-# Prediction + EDA (AFTER CLICK ONLY)
-# ----------------------------------
+# Prediction + Stats + Interactive Graph
+
 if st.sidebar.button("Predict Price"):
 
     # ---- Prediction ----
@@ -143,20 +143,29 @@ if st.sidebar.button("Predict Price"):
     st.subheader("🔍 Dataset Statistics")
     st.dataframe(data.describe())
 
-    # ---- Graph ----
-    st.subheader("📈 House Price Distribution")
+    # ---- Interactive Graph (Plotly) ----
+    st.subheader("📈 House Price Distribution (Interactive)")
 
-    plt.figure(figsize=(8, 4))
-    plt.hist(data["price"], bins=30)
-    plt.xlabel("House Price")
-    plt.ylabel("Count")
-    plt.title("House Price Distribution")
+    fig = px.histogram(
+        data,
+        x="price",
+        nbins=30,
+        title="House Price Distribution",
+        labels={"price": "House Price"},
+    )
 
-    st.pyplot(plt)
+    fig.update_layout(
+        bargap=0.1,
+        xaxis_title="House Price",
+        yaxis_title="Count",
+        hovermode="x unified"
+    )
 
-# ----------------------------------
+    st.plotly_chart(fig, use_container_width=True)
+
+
 # Footer
-# ----------------------------------
+
 st.markdown(
     """
     <div style="text-align:center; color:#6b7280; padding:20px;">

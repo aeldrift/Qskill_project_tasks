@@ -1,35 +1,35 @@
-# Step 1: Import libraries
+import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 
-
-# Step 2: Load the dataset
+# Load dataset
 data = pd.read_csv("data/Housing.csv")
 
+st.subheader("🔍 Exploratory Data Analysis (EDA)")
 
-# Step 3: See first 5 rows
-print("First 5 rows:")
-print(data.head())
+# Show first 5 rows
+st.write("### First 5 Rows of Dataset")
+st.dataframe(data.head())
 
+# Show shape
+st.write("### Dataset Shape")
+st.write(f"Rows: {data.shape[0]}, Columns: {data.shape[1]}")
 
-# Step 4: Check number of rows and columns
-print("\nShape of dataset:")
-print(data.shape)
+# Show column names
+st.write("### Column Names")
+st.write(list(data.columns))
 
+# Show basic statistics
+st.write("### Basic Statistics")
+st.dataframe(data.describe())
 
-# Step 5: Check column names
-print("\nColumn names:")
-print(data.columns)
+# Plot house price distribution
+st.write("### 📈 House Price Distribution")
 
-
-# Step 6: Check basic statistics
-print("\nBasic statistics:")
-print(data.describe())
-
-
-# Step 7: Plot house price distribution
+plt.figure(figsize=(8, 4))
 plt.hist(data["price"], bins=30)
 plt.xlabel("House Price")
 plt.ylabel("Count")
 plt.title("House Price Distribution")
-plt.show()
+
+st.pyplot(plt)

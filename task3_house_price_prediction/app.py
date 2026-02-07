@@ -1,19 +1,20 @@
 import streamlit as st
 import pandas as pd
+import matplotlib.pyplot as plt
 from sklearn.linear_model import LinearRegression
 
-# ----------------------------------
-# Page Configuration
-# ----------------------------------
+
+# Page Configuration (MUST BE FIRST)
+
 st.set_page_config(
     page_title="House Price Prediction",
     page_icon="🏠",
     layout="centered"
 )
 
-# ----------------------------------
+
 # Custom CSS (UI ONLY)
-# ----------------------------------
+
 st.markdown(
     """
     <style>
@@ -52,9 +53,9 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# ----------------------------------
+
 # App Title
-# ----------------------------------
+
 st.markdown(
     """
     <div style="text-align:center; padding: 20px;">
@@ -67,27 +68,27 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# ----------------------------------
-# Load Dataset
-# ----------------------------------
+
+# Load Dataset (ONCE)
+
 @st.cache_data
 def load_data():
     return pd.read_csv("data/Housing.csv")
 
 data = load_data()
 
-# ----------------------------------
+
 # Train Model
-# ----------------------------------
+
 X = data[["area", "bedrooms", "bathrooms", "stories", "parking"]]
 y = data["price"]
 
 model = LinearRegression()
 model.fit(X, y)
 
-# ----------------------------------
+
 # Sidebar Inputs
-# ----------------------------------
+
 st.sidebar.header("Enter House Details")
 
 area = st.sidebar.number_input(
@@ -103,10 +104,12 @@ bathrooms = st.sidebar.slider("Bathrooms", 1, 4, 2)
 stories = st.sidebar.slider("Stories", 1, 4, 2)
 parking = st.sidebar.slider("Parking Spaces", 0, 3, 1)
 
-# ----------------------------------
-# Prediction
+
+# Prediction + EDA (AFTER CLICK ONLY)
 # ----------------------------------
 if st.sidebar.button("Predict Price"):
+
+    # ---- Prediction ----
     input_data = pd.DataFrame(
         [[area, bedrooms, bathrooms, stories, parking]],
         columns=["area", "bedrooms", "bathrooms", "stories", "parking"]
@@ -125,7 +128,7 @@ if st.sidebar.button("Predict Price"):
             font-weight:700;
             color:#065f46;
             max-width:600px;
-            margin:auto;
+            margin:20px auto;
         ">
             🏷️ Estimated House Price: ₹ {prediction:,.0f}
         </div>
@@ -133,20 +136,23 @@ if st.sidebar.button("Predict Price"):
         unsafe_allow_html=True
     )
 
-# ----------------------------------
-# Dataset Preview
-# ----------------------------------
-st.markdown("<hr style='border:1px solid #e5e7eb;'>", unsafe_allow_html=True)
+    # ---- Divider ----
+    st.markdown("<hr style='border:1px solid #e5e7eb;'>", unsafe_allow_html=True)
 
-st.markdown(
-    """
-    <h2 style="margin-top:20px;">📊 Dataset Preview</h2>
-    <p style="color:#6b7280;">First 5 rows of the dataset</p>
-    """,
-    unsafe_allow_html=True
-)
+    # ---- Statistics ----
+    st.subheader("🔍 Dataset Statistics")
+    st.dataframe(data.describe())
 
-st.dataframe(data.head(), use_container_width=True)
+    # ---- Graph ----
+    st.subheader("📈 House Price Distribution")
+
+    plt.figure(figsize=(8, 4))
+    plt.hist(data["price"], bins=30)
+    plt.xlabel("House Price")
+    plt.ylabel("Count")
+    plt.title("House Price Distribution")
+
+    st.pyplot(plt)
 
 # ----------------------------------
 # Footer
@@ -154,7 +160,7 @@ st.dataframe(data.head(), use_container_width=True)
 st.markdown(
     """
     <div style="text-align:center; color:#6b7280; padding:20px;">
-        Built using Streamlit, Pandas & Machine Learning ❤️ 
+        Built using Streamlit, Pandas & Machine Learning ❤️
     </div>
     """,
     unsafe_allow_html=True

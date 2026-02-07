@@ -28,7 +28,7 @@ The dataset (food_delivery_delays.csv) represents real-world food delivery order
 **• Distance_km –**  Distance between the restaurant and the customer
 **• Traffic_Level –** Traffic condition during delivery (Low, Medium, High)
 **• Weather – Weather –** condition at the time of delivery
-**• Delivery_Time_min –**  Total delivery time in minutes
+**• Delivery_Time_min –**  Total delivery time in minutes 
 
 
 🛠️ **Tools & Libraries Used**

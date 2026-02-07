@@ -1,45 +1,43 @@
 import pandas as pd
-from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
-from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
+from sklearn.preprocessing import StandardScaler
 
-# Step 1: Load dataset
-data = pd.read_csv("data/Housing.csv")
 
-# Step 2: Select input features (numbers only)
-X = data[
-    [
+def train_model():
+    """
+    This function:
+    1. Loads the dataset
+    2. Selects important features
+    3. Scales the features
+    4. Trains a Linear Regression model
+    5. Returns the trained model and scaler
+    """
+
+    # STEP 1: Load the dataset from CSV file
+    data = pd.read_csv("data/Housing.csv")
+
+    # STEP 2: Select input features (X)
+    # These are the values the model will learn from
+    X = data[[
         "area",
         "bedrooms",
         "bathrooms",
         "stories",
         "parking"
-    ]
-]
+    ]]
 
-# Step 3: Select target variable
-y = data["price"]
+    # STEP 3: Select target variable (y)
+    # This is the value we want to predict
+    y = data["price"]
 
-# Step 4: Split data into training and testing
-X_train, X_test, y_train, y_test = train_test_split(
-    X, y, test_size=0.2, random_state=42
-)
+    # STEP 4: Scale the input features
+    # Scaling helps the model understand all features equally
+    scaler = StandardScaler()
+    X_scaled = scaler.fit_transform(X)
 
-# Step 5: Create Linear Regression model
-model = LinearRegression()
+    # STEP 5: Create and train the Linear Regression model
+    model = LinearRegression()
+    model.fit(X_scaled, y)
 
-# Step 6: Train the model
-model.fit(X_train, y_train)
-
-# Step 7: Make predictions
-predictions = model.predict(X_test)
-
-# Step 8: Evaluate model
-mae = mean_absolute_error(y_test, predictions)
-rmse = mean_squared_error(y_test, predictions) ** 0.5
-r2 = r2_score(y_test, predictions)
-
-print("\nModel Performance:")
-print("MAE :", mae)
-print("RMSE:", rmse)
-print("R²  :", r2)
+    # STEP 6: Return the trained model and scaler
+    return model, scaler

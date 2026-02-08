@@ -40,17 +40,17 @@ Interactive Streamlit web app for real-time predictions
 
 🛠️ **Technologies Used**
 
-Python
+• Python
 
-Pandas
+• Pandas
 
-NumPy
+• NumPy
 
-Matplotlib
+• Matplotlib
 
-Scikit-learn
+• Scikit-learn
 
-Streamlit
+• Streamlit
 
 📜 **License**
 

@@ -3,7 +3,7 @@
 This repository contains three independent Python projects completed as part of the QSKILL Internship Program.
 Each task focuses on a different real-world problem using Python, Data Analysis, Machine Learning, and Streamlit.
 
-📁**Projects Overview**
+📁 **Projects Overview**
 
 🧮 **Task 1: Matrix Operations Tool**
 

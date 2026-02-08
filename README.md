@@ -4,6 +4,7 @@ This repository contains three independent Python projects completed as part of 
 Each task focuses on a different real-world problem using Python, Data Analysis, Machine Learning, and Streamlit.
 
 📁**Projects Overview**
+
 🧮 **Task 1: Matrix Operations Tool**
 
 Interactive Python tool for matrix calculations

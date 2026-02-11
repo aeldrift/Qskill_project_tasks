@@ -5,6 +5,40 @@ Each task focuses on a different real-world problem using Python, Data Analysis,
 
 📁 **Projects Overview**
 
+📁 **Projects Structure**
+
+``` QSKILL_PROJECT_TASKS/
+│
+├── task1_matrix_operations/
+│   ├── __pycache__/
+│   ├── matrix_app.py
+│   ├── matrix_operations_tool.py
+│   └── README.md
+│
+├── task2_Food_Delivery_Delay_Analysis/
+│   ├── delivery_ui_app.py
+│   ├── food_delivery_delays.csv
+│   ├── task2_food_delivery_analysis.py
+│   └── README.md
+│
+├── task3_house_price_prediction/
+│   ├── data/
+│   │   └── Housing.csv
+│   │
+│   ├── src/
+│   │   ├── __pycache__/
+│   │   ├── __init__.py
+│   │   ├── eda.py
+│   │   ├── model.py
+│   │   └── app.py
+│   │
+│   ├── house_price_prediction.py
+│   └── README.md
+│
+├── LICENSE
+└── README.md
+```
+
 🧮 **Task 1: Matrix Operations Tool**
 
 Interactive Python tool for matrix calculations

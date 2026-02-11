@@ -5,7 +5,7 @@ Each task focuses on a different real-world problem using Python, Data Analysis,
 
 📁 **Projects Overview**
 
-📁 **Projects Structure**
+ **Projects Structure**
 
 ``` QSKILL_PROJECT_TASKS/
 │
